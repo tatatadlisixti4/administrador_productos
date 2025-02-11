@@ -1,6 +1,8 @@
 import {Sequelize} from 'sequelize'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const db = new Sequelize('postgresql://products_administrator_user:q4Whh8kTjRLdtglY1mpC6QqRlRkepsc2@dpg-culc5ltds78s73bpd4ng-a.oregon-postgres.render.com/products_administrator', {
+const db = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
         logging: false,
         ssl: {
