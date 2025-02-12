@@ -1,11 +1,12 @@
 import {Router} from "express"
 import {Request, Response} from "express"
+import {createProduct} from "./handlers/products"
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.json('hola')
+    res.json('Desde GET')
 })
-router.post('/')
+router.post('/', createProduct)
 router.put('/')
 router.patch('/')
 router.delete('/')

@@ -19,6 +19,7 @@ connectDB()
 
 /** Server Configuration */
 const server = express()
+server.use(express.json())
 
 /** Handle Routes */
 server.use('/api/products', router)
