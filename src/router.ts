@@ -2,6 +2,7 @@ import {Router} from "express"
 import {body} from 'express-validator'
 import {Request, Response} from "express"
 import {createProduct} from "./handlers/products"
+import {handlerInputsErrors} from "./middleware"
 const router = Router()
 
 router.get('/', (req, res) => {
@@ -13,6 +14,7 @@ router.post('/',
     body('price')
         .notEmpty().withMessage('El campo precio no puede ir vacío')
         .isInt({min: 0}).withMessage('Valor por debajo del mínimo'),
+    handlerInputsErrors,
     createProduct
 )
 router.put('/')

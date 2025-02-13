@@ -15,6 +15,7 @@ async function connectDB() {
         console.log(colors.red.bold('Falló la conexión a la BD'))
     }
 }
+
 connectDB()
 
 /** Server Configuration */
