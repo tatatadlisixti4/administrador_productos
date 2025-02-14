@@ -1,20 +1,19 @@
 import {Router} from "express"
 import {body} from 'express-validator'
 import {Request, Response} from "express"
-import {createProduct} from "./handlers/products"
-import {handlerInputsErrors} from "./middleware"
+import {createProduct, getProducts} from "./handlers/products"
+import {HandleInputErrors} from "./middleware"
 const router = Router()
 
-router.get('/', (req, res) => {
-    res.json('Desde GET')
-})
+router.get('/', getProducts)
+
 router.post('/', 
     body('name')
     .notEmpty().withMessage('El campo nombre no puede ir vacío'),
     body('price')
         .notEmpty().withMessage('El campo precio no puede ir vacío')
         .isInt({min: 0}).withMessage('Valor por debajo del mínimo'),
-    handlerInputsErrors,
+    HandleInputErrors,
     createProduct
 )
 router.put('/')
